@@ -1,0 +1,23 @@
+title 0.6: Nueva nota
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: spa.js
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+server-->browser: new_note_spa
+
+note over browser:
+La solicitud POST a la dirección new_note_spa 
+contiene la nueva nota como datos JSON que contienen
+tanto el contenido de la nota (content) como la marca de tiempo (date):
+end note
+
+
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over server:
+El servidor responde con el código de estado 201 Created.
+no solicita una redirección, el navegador permanece en 
+la misma página y no envía más solicitudes HTTP
+end note
